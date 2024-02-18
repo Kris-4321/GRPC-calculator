@@ -20,6 +20,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("didnt connect %v", err)
 	}
+	if err == nil {
+		fmt.Println("connection successful")
+	}
 	defer conn.Close()
 	client := pb.NewCalculatorClient(conn)
 
@@ -37,7 +40,8 @@ func main() {
 		log.Fatalf("error : %v", err2)
 	}
 
-	fmt.Print(`select an option:
+	fmt.Print(`
+select an option:
 1 add
 2 subtract
 3 multiply
